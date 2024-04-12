@@ -66,8 +66,8 @@ class Game {
             scoreDisplay.textContent = score;
             console.log(score);
         this.displayCorrectAnswer();
-        this.pickRandomVillage();
         this.checkHighScore();
+        this.pickRandomVillage();
     } else {
         alert('Anghywir! Sgôr: ' + score);
         this.displayCorrectAnswer();
@@ -76,7 +76,6 @@ class Game {
         scoreDisplay.textContent = score;
         this.displayCorrectAnswer();
          this.pickRandomVillage();
-        // Optionally reset the game or provide an option to restart
     }
 }
 

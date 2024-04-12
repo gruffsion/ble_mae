@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Initialize the game with the villages array after all spans are positioned
             game = new Game(villages);
-            controls = new DraggableCircle('circleContainer');  // Initialize the draggable circle
+            controls = new DraggableCircle('mapContainer');  // Initialize the draggable circle
             document.getElementById('startButton').addEventListener('click', () => game.start());
             game.start();
         })

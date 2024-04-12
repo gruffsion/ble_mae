@@ -47,8 +47,8 @@ function convertGeoCoordsToPixels(latitude, longitude) {
     const height = mapContainer.clientHeight;  // Get current height
 
     // Normalize the coordinates based on the map's current dimensions
-    const x = ((longitude + 5.5) / 3) * width;  // Assuming longitude ranges approximately from -5.5 to 5.5
-    const y = ((53.5 - latitude) / 2.3) * height;  // Assuming latitude ranges approximately from 51.5 to 53.5
+    const x = ((longitude + 5.3) / 2.7) * width;  // Assuming longitude ranges approximately from -5.5 to 5.5
+    const y = ((53.5 - latitude) / 2.2) * height;  // Assuming latitude ranges approximately from 51.5 to 53.5
 
     return { x, y };
 }

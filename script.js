@@ -6,21 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('query.json')
         .then(response => response.json())
         .then(villagesData => {
-            villages = villagesData;
-            villages.forEach(village => {
+            villages = villagesData.map(village => {
                 const coordinatesMatch = village.coordinates.match(/Point\(([^ ]+) ([^ ]+)\)/);
                 if (coordinatesMatch) {
                     const longitude = parseFloat(coordinatesMatch[1]);
                     const latitude = parseFloat(coordinatesMatch[2]);
-                    positionVillage(village.villageLabel, latitude, longitude, village);
+                    // Set a unique spanId using coordinates
+                    village.spanId = `village-${longitude}-${latitude}`;
+                    positionVillage(village.villageLabel, latitude, longitude, village.spanId);
                 } else {
                     console.error('Could not extract coordinates for village:', village.villageLabel);
                 }
+                return village;
             });
 
-            // Initialize the game with the villages array after all spans are positioned
+            // Initialize the game and other components
             game = new Game(villages);
-            controls = new DraggableCircle('mapContainer');  // Initialize the draggable circle
+            controls = new DraggableCircle('mapContainer');
             document.getElementById('startButton').addEventListener('click', () => game.start());
             game.start();
         })
@@ -29,11 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-function positionVillage(label, latitude, longitude, village) {
+function positionVillage(label, latitude, longitude, spanId) {
     const span = document.createElement('span');
+    span.id = spanId; // Use coordinates-based ID for each span
     span.style.position = 'absolute';
-    span.dataset.villageLabel = village.villageLabel; // Assign villageLabel as a data attribute for identification
-    // Convert latitude and longitude to x and y positions
     const { x, y } = convertGeoCoordsToPixels(latitude, longitude);
     span.style.left = `${x}px`;
     span.style.top = `${y}px`;
@@ -41,8 +42,13 @@ function positionVillage(label, latitude, longitude, village) {
 }
 
 function convertGeoCoordsToPixels(latitude, longitude) {
-    const x = (longitude + 5.5) * 120; // Example conversion, adjust as necessary
-    const y = (53.5 - latitude) * 190; // Example conversion, adjust as necessary
+    const mapContainer = document.getElementById('mapContainer');
+    const width = mapContainer.clientWidth;  // Get current width
+    const height = mapContainer.clientHeight;  // Get current height
+
+    // Normalize the coordinates based on the map's current dimensions
+    const x = ((longitude + 5.5) / 3) * width;  // Assuming longitude ranges approximately from -5.5 to 5.5
+    const y = ((53.5 - latitude) / 2.3) * height;  // Assuming latitude ranges approximately from 51.5 to 53.5
+
     return { x, y };
 }
-

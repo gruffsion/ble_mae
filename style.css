@@ -55,8 +55,8 @@ body {
 
 #mapContainer {
     position: relative;
-    width: 500px;
-    height: 610px;
+    width: 600px;
+    height: 800px;
     border: 1px solid #000;
     background-color: lightblue; /* Example background color */
 }
@@ -86,7 +86,7 @@ height: 100%;
     border-radius: 50%;
     width: 60px; height: 60px;
     background-color: blue;
-    position: absolute;
+    position: relative;
     cursor: grab;
     opacity: 0.8;
     z-index: 1;

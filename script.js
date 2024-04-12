@@ -41,8 +41,8 @@ function positionVillage(label, latitude, longitude, village) {
 }
 
 function convertGeoCoordsToPixels(latitude, longitude) {
-    const x = (longitude + 5.5) * 200; // Example conversion, adjust as necessary
-    const y = (53.5 - latitude) * 300; // Example conversion, adjust as necessary
+    const x = (longitude + 5.5) * 120; // Example conversion, adjust as necessary
+    const y = (53.5 - latitude) * 190; // Example conversion, adjust as necessary
     return { x, y };
 }
 

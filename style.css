@@ -1,0 +1,92 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    max-width: 800px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Change to center */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+#question {
+    padding-right: 0.4rem;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+}
+
+
+.score-container {
+    display: flex; /* Use flexbox to align children in a row */
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-evenly; /* Align items to the start of the container */
+    background-color: #f0f0f0; /* Light grey background for visibility */
+    width: 300px; /* Set a specific width for the container */
+    margin-left: 10px;
+}
+
+.score-label {
+    font-weight: bold; /* Make the label bold */
+    margin-right: 10px; /* Add space between the label and the score */
+}
+
+.score-value {
+    color: green; /* Color for the score value */
+}
+
+#mapContainer {
+    position: relative;
+    width: 600px;
+    height: 700px;
+    border: 1px solid #000;
+    background-color: lightblue; /* Example background color */
+}
+
+#mapContainer span {
+    display: block;
+    position: relative;
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+#circleContainer {
+width: 100%;
+height: 100%;
+}
+
+
+.highlighted {
+    border: 20px solid rgb(0, 156, 18);
+    z-index: 2;
+}
+
+
+.circle {
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    background-color: blue;
+    position: absolute;
+    cursor: grab;
+    opacity: 0.8;
+    z-index: 1;
+}

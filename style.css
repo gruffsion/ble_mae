@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-    max-width: 800px;
 }
 
 .head {
@@ -29,8 +28,10 @@ body {
 #question {
     padding-right: 0.4rem;
     white-space: nowrap; /* Prevent line breaks */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+}
+
+#mapContainer{
+    max-width: 100%;
 }
 
 
@@ -54,8 +55,8 @@ body {
 
 #mapContainer {
     position: relative;
-    width: 600px;
-    height: 700px;
+    width: 500px;
+    height: 610px;
     border: 1px solid #000;
     background-color: lightblue; /* Example background color */
 }

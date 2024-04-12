@@ -62,7 +62,7 @@ body {
 /* Media Query for smaller devices */
 @media (max-width: 600px) {
     #mapContainer {
-        height: 50vh;  /* Adjust height on smaller screens */
+        height: 80vh;  /* Adjust height on smaller screens */
     }
 }
 

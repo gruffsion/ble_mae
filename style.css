@@ -54,7 +54,7 @@ body {
     position: relative;
     max-width: 580px;
     width: 100%;  /* Adjust the width to be 100% of the parent container */
-    height: 75vh;  /* Use viewport height to maintain aspect ratio */
+    height: 90vh;  /* Use viewport height to maintain aspect ratio */
     border: 1px solid #000;
     background-color: lightblue;
 }

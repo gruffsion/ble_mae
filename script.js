@@ -43,12 +43,23 @@ function positionVillage(label, latitude, longitude, spanId) {
 
 function convertGeoCoordsToPixels(latitude, longitude) {
     const mapContainer = document.getElementById('mapContainer');
-    const width = mapContainer.clientWidth;  // Get current width
-    const height = mapContainer.clientHeight;  // Get current height
+    const width = mapContainer.offsetWidth;  // Dynamic width of map container
+    const height = mapContainer.offsetHeight;  // Dynamic height of map container
 
-    // Normalize the coordinates based on the map's current dimensions
-    const x = ((longitude + 5.3) / 2.7) * width;  // Assuming longitude ranges approximately from -5.5 to 5.5
-    const y = ((53.5 - latitude) / 2.2) * height;  // Assuming latitude ranges approximately from 51.5 to 53.5
+    // Define the geographic boundaries of Wales
+    const minLatitude = 51.4;
+    const maxLatitude = 53.5;
+    const minLongitude = -5.4;
+    const maxLongitude = -2.6;
+
+    // Calculate normalized positions between 0 and 1
+    const xNormalized = (longitude - minLongitude) / (maxLongitude - minLongitude);
+    const yNormalized = (maxLatitude - latitude) / (maxLatitude - minLatitude);  // Invert y for screen coordinates
+
+    // Convert normalized positions to pixel values based on map container size
+    const x = xNormalized * width;
+    const y = yNormalized * height - 20;
 
     return { x, y };
 }
+

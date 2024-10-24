@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ble mae?</title>
+    <title>Ble mae'r pentref?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="game-container">
     <div class="score-container">
         <div>
             <span class="score-label">Sgôr:</span>
@@ -17,20 +18,23 @@
             <span class="score-label">Sgôr Uchaf:</span>
             <span class="score-value" id="highScoreValue">0</span>
         </div>
+        <button id="startButton">Ailddechrau</button>
     </div>   
 
     <div class="head">
-        <div id="question">Ble mae</div>
+        <div id="question">Ble mae:&nbsp;</div>
         <div id="placeNameDisplay"> </div>
     </div>  
 
    
 
         <div id="mapContainer">
-        </div>
-        
-    <button id="startButton">Ailddechrau</button>
+            <object id="wales-outline" type="image/png" data="Outline-Wales-5.png"></object>
+</div>
 
+
+    </div>
+    
 
     <script src="script.js"></script>
     <script src="controls.js"></script>

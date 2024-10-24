@@ -1,8 +1,8 @@
-// game.js
+
 let score = 0;
 let highScore = 0;
 const scoreDisplay = document.getElementById('scoreValue');
-const highScoreDisplay = document.getElementById('highScoreValue'); // Ensure this element exists in your HTML
+const highScoreDisplay = document.getElementById('highScoreValue'); 
 
 class Game {
     constructor(villages) {

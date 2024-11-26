@@ -1,8 +1,6 @@
 // game.js
 let score = 0;
-let highScore = 0;
 const scoreDisplay = document.getElementById('scoreValue');
-const highScoreDisplay = document.getElementById('highScoreValue'); 
 
 
 class Game {
@@ -27,15 +25,17 @@ class Game {
 
     pickRandomVillage() {
         if (this.guessesRemaining > 0) {
-            const index = Math.floor(Math.random() * this.villages.length);
-            this.currentVillageIndex = index;
-            const village = this.villages[index];
+            // loop through villages in sequence
+            const village = this.villages[this.villages.length - this.guessesRemaining];
+            this.currentVillageIndex = this.allVillages.indexOf(village);
+    
+            // Display the current village name
             document.getElementById('placeNameDisplay').textContent = `${village.villageLabel}, ${village.regionLabel}`;
         } else {
             this.displayFinalScore();
         }
     }
-
+    
     checkCircleCoverage(circle) {
         const circleRect = circle.getBoundingClientRect();
         const circleCenterX = circleRect.left + circleRect.width / 2;
@@ -97,8 +97,26 @@ class Game {
     resetGame() {
         this.totalScore = 0;
         this.guessesRemaining = 5;
-        this.villages = this.getFiveRandomVillages();
+        this.villages = this.getFiveRandomVillages(); // Get 5 new unique villages
+        this.currentVillageIndex = null; // Reset current index
         scoreDisplay.textContent = 0;
+    
+        // Remove old village DOM elements
+        document.querySelectorAll('#mapContainer span').forEach(span => span.remove());
+    
+        // Position new villages on the map
+        this.villages.forEach(village => {
+            const coordinatesMatch = village.coordinates.match(/Point\(([^ ]+) ([^ ]+)\)/);
+            if (coordinatesMatch) {
+                const longitude = parseFloat(coordinatesMatch[1]);
+                const latitude = parseFloat(coordinatesMatch[2]);
+                village.spanId = `village-${longitude}-${latitude}`; // Regenerate unique ID
+                positionVillage(village.villageLabel, latitude, longitude, village.spanId);
+            }
+        });
+    
         this.start();
     }
+    
+    
 }
